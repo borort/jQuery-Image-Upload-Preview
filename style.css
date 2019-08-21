@@ -1,0 +1,14 @@
+.upload-area{
+    width: 200px;
+    height: 200px;
+    border: 2px dashed #ddd;
+    border-radius: 5px;
+    margin: 0 auto;
+    margin-top: 0px;
+    text-align: center;
+    overflow: auto;
+    padding: 20px;
+    display: inline-block;
+    margin-right: 10px;
+    vertical-align:top;
+}
