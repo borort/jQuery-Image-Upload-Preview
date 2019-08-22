@@ -52,6 +52,8 @@ $(function() {
 
 function previewImages() {
 
+    var file_lenght = 5;
+
     var preview = document.querySelector('#preview');
     if (document.querySelector('#file-input').files) {
       [].forEach.call(document.querySelector('#file-input').files, readAndPreview);
@@ -62,29 +64,23 @@ function previewImages() {
       // Make sure `file.name` matches our extensions criteria
       if (!/\.(jpe?g|png|gif)$/i.test(file.name)) {
         return alert(file.name + " is not an image");
-      } // else...
+      }
 
       var reader = new FileReader();
       reader.addEventListener("load", function() {
-          /*var image = new Image();
-          image.height = 100;
-          image.title  = file.name;
-          image.src    = this.result;
-          image.className  = "thumbnail thumb-image";
-          */
-          //preview.appendChild(image);
 
-          //var image = '<div><img src="'+this.result+'" class="thumbnail thumb-image"><br><a href="#">Delete</a></div>';
           var image = $("<div style='display:inline-block; margin-right: 1em; position:relative;'><img src='"+this.result+"' style='height: 200px; width:200px; object-fit: cover; object-position: center; ' class='img-thumbnail thumb-image'><a href='#' style='position: absolute; top: 10px; right: 10px' class='btn btn-danger btn-sm btn-delete'>x</a><br><br></div>");
 
-          $('#preview').append(image);
+          if($("#preview img.thumb-image").length < file_lenght) {
+            $('#preview').append(image);
+          }
+
           $('.btn-delete').click(function(){
             $(this).parent('div').remove();
           });
       });
 
       reader.readAsDataURL(file);
-
     }
 
 }
