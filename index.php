@@ -20,7 +20,7 @@
           <form method="post" action="upload.php" name="form" id="form">
             <div id="preview" style="display: inline-block;">
               <div class="upload-area" id="uploadfile">
-                  <span style="vertical-align: middle;">Drag and Drop file here<br/>Or<br/>Click to select file<br/>+</span>
+                  <span style="vertical-align: middle;">Drag and Drop image here<br/>Or<br/>Click to select image<br/>+</span>
                   <br>
               </div>
             </div>

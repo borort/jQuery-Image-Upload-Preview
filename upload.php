@@ -7,16 +7,13 @@
 
     $imgs = array_shift($matches);
     for($i=0; $i< count($imgs); $i++) {
-        $base_to_php = preg_replace('#^data:image/\w+;base64,#i', '', $imgs[$i]);
-        //print "<hr>";
-        //print_r($base_to_php);
 
+        //$ext = $imgs[$i].substring("data:image/".length, $imgs[$i].indexOf(";base64"));
+        $base_to_php = preg_replace('#^data:image/\w+;base64,#i', '', $imgs[$i]);
         $data = base64_decode($base_to_php);
         $filepath = uniqid(rand(), true) . ".jpeg";
         file_put_contents($filepath, $data);
-
         echo "Uploaded successfully!";
-
     }
 
  ?>

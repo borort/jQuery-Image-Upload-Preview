@@ -1,6 +1,6 @@
 $(function() {
 
-      // on the submit event, generate a image from the canvas and save the data in the hidden field
+      // on submit, store array of image data in the hidden field
      document.getElementById('form').addEventListener("submit",function(){
         var img_array = [];
         var i = 0;
@@ -31,18 +31,17 @@ $(function() {
          $("#file-input").click();
      });
 
-     // Drop files
+     // Drop files on upload area
      $('.upload-area').on('drop', function (e) {
          e.stopPropagation();
          e.preventDefault();
          e.dataTransfer = e.originalEvent.dataTransfer;
-
          $("#uploadfile").css("background-color", "#fff");
          document.querySelector('#file-input').files = e.originalEvent.dataTransfer.files;
          $('#file-input').trigger('change');
      });
 
-
+     // Trigger previewImages on file input value change
      $('#file-input').on('change', function() {
        previewImages();
      });
@@ -52,16 +51,14 @@ $(function() {
 
 function previewImages() {
 
-    var file_lenght = 5;
-
+    var file_lenght = 10; //number of files are allowed to be uploaded
     var preview = document.querySelector('#preview');
     if (document.querySelector('#file-input').files) {
       [].forEach.call(document.querySelector('#file-input').files, readAndPreview);
     }
 
     function readAndPreview(file) {
-
-      // Make sure `file.name` matches our extensions criteria
+      // validate image file extension
       if (!/\.(jpe?g|png|gif)$/i.test(file.name)) {
         return alert(file.name + " is not an image");
       }
